@@ -1,5 +1,6 @@
 # --- Base System & Performance Stability ---
 linux-generic
+linux-firmware
 systemd-sysv
 network-manager
 sudo
@@ -18,13 +19,13 @@ lightdm-gtk-greeter
 
 # --- Hardware Drivers & Microcode (AMD & NVIDIA RTX 2060) ---
 amd64-microcode
-firmware-linux
 nvidia-driver-550
 nvidia-utils-550
 libnvidia-gl-550:amd64
 
 # --- Gaming & Daily Performance Stack ---
-steam
+steam-installer
+steam-devices
 lutris
 mangohud
 gamemode
