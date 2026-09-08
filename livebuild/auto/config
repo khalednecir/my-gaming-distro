@@ -4,5 +4,6 @@ lb config \
     --distribution noble \
     --archive-areas "main restricted universe multiverse" \
     --architectures amd64 \
+    --linux-flavours generic \
     --binary-images iso-hybrid \
-    --dehacked true "$@"
+    "$@"
