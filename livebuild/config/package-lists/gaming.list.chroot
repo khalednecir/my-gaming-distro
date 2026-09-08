@@ -1,0 +1,39 @@
+# --- Base System & Performance Stability ---
+linux-generic
+systemd-sysv
+network-manager
+sudo
+locales
+grub-efi-amd64-signed
+shim-signed
+casper
+live-boot
+live-config
+
+# --- Lightweight Desktop Environment (XFCE Minimal) ---
+xfce4
+xfce4-goodies
+lightdm
+lightdm-gtk-greeter
+
+# --- Hardware Drivers & Microcode (AMD & NVIDIA RTX 2060) ---
+amd64-microcode
+firmware-linux
+nvidia-driver-550
+nvidia-utils-550
+libnvidia-gl-550:amd64
+
+# --- Gaming & Daily Performance Stack ---
+steam
+lutris
+mangohud
+gamemode
+libgl1-mesa-dri:amd64
+mesa-vulkan-drivers:amd64
+
+# --- Essential Daily Utilities ---
+firefox
+curl
+git
+htop
+pavucontrol
