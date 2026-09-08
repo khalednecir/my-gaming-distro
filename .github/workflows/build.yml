@@ -1,0 +1,47 @@
+name: Build Custom Gaming Ubuntu ISO
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-storage: true
+          docker-images: true
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y live-build debootstrap squashfs-tools genisoimage xorriso
+
+      - name: Initialize and Build ISO
+        run: |
+          cd livebuild
+          sudo lb config \
+            --distribution noble \
+            --archive-areas "main restricted universe multiverse" \
+            --parent-distribution noble \
+            --parent-archive-areas "main restricted universe multiverse" \
+            --mirror-bootstrap "http://archive.ubuntu.com/ubuntu/" \
+            --mirror-binary "http://archive.ubuntu.com/ubuntu/" \
+            --binary-images iso-hybrid \
+            --architectures amd64
+            
+          sudo lb build
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ubuntu-TUF-RTX2060-Gaming-ISO
+          path: livebuild/*.iso
